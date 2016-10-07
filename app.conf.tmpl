@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+  ProxyPreserveHost On
+  ServerAlias helloworld.service.consul
+  ProxyPass / http://192.168.231.188:8080/
+  ProxyPassReverse / http://192.168.231.188:8080/ 
+</VirtualHost>
