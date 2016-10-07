@@ -34,6 +34,8 @@ http :8500/v1/catalog/service/helloworld
 
 dig @localhost -p 8600 helloworld.service.consul
 
+dig helloworld.service.consul
+
 docker run -it -P --name helloworld2 --entrypoint bash --env CONSUL=$CONSUL svenmalvik/helloworld 
 
 /opt/envconsul -consul $CONSUL -sanitize -upcase -prefix config/webapp /go/bin/helloworld
