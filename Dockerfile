@@ -13,5 +13,4 @@ ENV HTTPD_FILE /usr/local/apache2/conf/extra/app.conf
 
 COPY app.conf /usr/local/apache2/conf/extra/
 COPY httpd.conf /usr/local/apache2/conf/
-
-# CMD consul-template -consul=$CONSUL -log-level debug -template "$CT_FILE:$HTTPD_FILE:apachectl -k graceful"
+COPY start.sh /usr/local/apache2/
