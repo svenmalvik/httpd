@@ -1,5 +1,7 @@
 ------ PREPARATION ---------
 
+install httpie
+ 
 CONSUL=<HOST_IP>:8500
 
 >> vi /etc/resolv.conf
