@@ -2,8 +2,6 @@
 
 install httpie
  
-CONSUL=<HOST_IP>:8500
-
 >> vi /etc/resolv.conf
 search localdomain
 nameserver 127.0.0.1
@@ -17,6 +15,8 @@ server=/consul/127.0.0.1#8600
 <<
 
 docker run -d --name consul -p 8400:8400 -p 8500:8500 -p 8600:53/udp -h node1 progrium/consul -server -bootstrap -ui-dir /ui
+
+CONSUL=<HOST_IP>:8500
 
 echo "Dies ist ein Test | "http PUT $CONSUL/v1/kv/config/webapp/TEST
 
