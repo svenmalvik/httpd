@@ -1,4 +1,4 @@
-FROM httpd
+FROM httpd:2.4
 
 RUN apt-get update -y && apt-get install -y vim httpie unzip curl wget
 
