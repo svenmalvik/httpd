@@ -1,6 +1,8 @@
+{{range service "helloworld"}}
 <VirtualHost *:80>
   ProxyPreserveHost On
-  ServerAlias helloworld.service.consul
-  ProxyPass / http://192.168.231.188:8080/
-  ProxyPassReverse / http://192.168.231.188:8080/ 
+  ServerAlias {{.Name}}.service.consul
+  ProxyPass / http://{{.Address}}:{{.Port}}/
+  ProxyPassReverse / http://{{.Address}}:{{.Port}}/
 </VirtualHost>
+{{end}}
