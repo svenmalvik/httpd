@@ -21,7 +21,7 @@ curl -X PUT $CONSUL/v1/kv/config/webapp/TEST -d "Dies ist ein Test"
 
 ------ LIVE DEMO ---------
 
-docker run -d -p 8080:80 --rm --name helloworld svenmalvik/helloworld
+docker run -d -p 8080:80 --name helloworld svenmalvik/helloworld
 
 curl -X PUT -d '{ "ID": "helloworld","Name": "helloworld","Address": "127.0.0.1","Port": 8080}' http://127.0.0.1:8500/v1/agent/service/register
 
