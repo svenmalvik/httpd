@@ -1,4 +1,8 @@
 ------ PREPARATION ---------
+ sudo yum install -y bind-utils
+ sudo yum -y groups install "GNOME Desktop"
+ startx
+
 >> vi /etc/resolv.conf
 search localdomain
 nameserver 127.0.0.1
@@ -25,9 +29,9 @@ docker run -d -p 8080:80 --name helloworld svenmalvik/helloworld
 
 curl -X PUT -d '{ "ID": "helloworld","Name": "helloworld","Address": "127.0.0.1","Port": 8080}' http://127.0.0.1:8500/v1/agent/service/register
 
-http :8500/v1/catalog/services
+curl localhost:8500/v1/catalog/services
 
-http :8500/v1/catalog/service/helloworld
+curl localhost:8500/v1/catalog/service/helloworld
 
 dig @localhost -p 8600 helloworld.service.consul
 
