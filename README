@@ -26,7 +26,7 @@ curl -X PUT $CONSUL/v1/kv/config/webapp/TEST -d "Dies ist ein Test"
 ------ LIVE DEMO ---------
 ### Service Discovery ###
 docker run -d -p 8080:80 --name helloworld svenmalvik/helloworld
-curl -X PUT -d '{ "ID": "helloworld","Name": "helloworld","Address": "127.0.0.1","Port": 8080}' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{ "ID": "helloworld","Name": "helloworld","Address": "<IP>","Port": 8080}' http://127.0.0.1:8500/v1/agent/service/register
 curl localhost:8500/v1/catalog/services
 curl localhost:8500/v1/catalog/service/helloworld
 dig @localhost -p 8600 helloworld.service.consul
@@ -40,6 +40,6 @@ docker run -it -P --name helloworld2 --entrypoint bash --env CONSUL=$CONSUL sven
 docker run -it -p 80:80 --name httpd --entrypoint bash --env CONSUL=$CONSUL svenmalvik/httpd
 httpd -k start
 consul-template -consul=$CONSUL -template "/etc/consul-templates/app.conf.tmpl:/usr/local/apache2/conf/extra/app.conf:httpd -k restart"
-curl -X PUT -d '{ "ID": "helloworld2","Name": "helloworld2","Address": "127.0.0.1","Port": <PORT>}' http://127.0.0.1:8500/v1/agent/service/register
+curl -X PUT -d '{ "ID": "helloworld2","Name": "helloworld2","Address": "<IP>","Port": <PORT>}' http://127.0.0.1:8500/v1/agent/service/register
 
 ------ END OF LIVE DEMO ---------
