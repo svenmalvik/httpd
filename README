@@ -37,7 +37,9 @@ docker run -it -P --name helloworld2 --entrypoint bash --env CONSUL=$CONSUL sven
 /opt/envconsul -consul $CONSUL -sanitize -upcase -prefix config/webapp /go/bin/helloworld
 
 ### consul template ###
-docker run -it -p 80:80 --name helloworld2 --entrypoint bash --env CONSUL=$CONSUL svenmalvik/httpd
+docker run -it -p 80:80 --name httpd --entrypoint bash --env CONSUL=$CONSUL svenmalvik/httpd
+httpd -k start
+consul-template -consul=$CONSUL -template "/etc/consul-templates/app.conf.tmpl:/usr/local/apache2/conf/extra/app.conf:httpd -k restart"
 curl -X PUT -d '{ "ID": "helloworld2","Name": "helloworld2","Address": "127.0.0.1","Port": <PORT>}' http://127.0.0.1:8500/v1/agent/service/register
-consul-template -consul=$CONSUL -template "/etc/consul-templates/app.conf.tmpl:/usr/local/apache2/conf/extra/app.conf" -once
+
 ------ END OF LIVE DEMO ---------
