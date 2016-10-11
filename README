@@ -1,7 +1,5 @@
 ------ PREPARATION ---------
  sudo yum install -y bind-utils
- sudo yum -y groups install "GNOME Desktop"
- startx
 
 >> vi /etc/resolv.conf
 search localdomain
