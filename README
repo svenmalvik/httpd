@@ -35,6 +35,7 @@ docker stop helloworld; docker rm helloworld
 ### envconsul ###
 docker run -it -p 8080:80 --name helloworld --entrypoint bash --env CONSUL=$CONSUL svenmalvik/helloworld 
 /opt/envconsul -consul $CONSUL -sanitize -upcase -prefix config/webapp /go/bin/helloworld
+docker stop helloworld; docker rm helloworld
 
 ### consul template ###
 docker run -it -p 80:80 --name httpd --entrypoint bash --env CONSUL=$CONSUL svenmalvik/httpd
