@@ -43,4 +43,6 @@ docker run -it -p 80:80 --name httpd --entrypoint bash --env CONSUL=$CONSUL sven
 curl -X PUT -d '{ "ID": "helloworld","Name": "helloworld","Address": "<IP>","Port": 8080}' http://127.0.0.1:8500/v1/agent/service/register
 consul-template -consul=$CONSUL -template "/etc/consul-templates/app.conf.tmpl:/usr/local/apache2/conf/extra/app.conf:httpd -k restart"
 
+### Clean up ###
+docker stop helloworld httpd; docker rm helloworld httpd
 ------ END OF LIVE DEMO ---------
