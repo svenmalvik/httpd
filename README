@@ -38,8 +38,11 @@ docker stop helloworld; docker rm helloworld
 ### envconsul ###
 docker run -it -p 8080:80 --name helloworld --entrypoint bash --env CONSUL=$CONSUL svenmalvik/helloworld 
 /opt/envconsul -consul $CONSUL -sanitize -upcase -prefix config/webapp /go/bin/helloworld
+curl -X PUT $CONSUL/v1/kv/config/webapp/TEST -d "This is a test"
+curl helloworld.service.consul
 
 ### Clean up ###
 curl -X DELETE $CONSUL/v1/agent/service/deregister/helloworld
+curl -X PUT $CONSUL/v1/kv/config/webapp/TEST -d "Dies ist ein Test"
 docker stop helloworld httpd; docker rm helloworld httpd
 ------ END OF LIVE DEMO ---------
