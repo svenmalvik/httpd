@@ -1,5 +1,5 @@
 ------ PREPARATION ---------
- sudo yum install -y bind-utils
+ sudo yum install -y bind-utils dnsmasq
 
 >> vi /etc/resolv.conf
 search localdomain
@@ -7,9 +7,7 @@ nameserver 127.0.0.1
 nameserver --the original--
 >>
 
->>
-INSTALL/RUN dnsmasq
-vi /etc/dnsmasq.d/10-consul.conf
+>> vi /etc/dnsmasq.d/10-consul.conf
 server=/consul/127.0.0.1#8600
 <<
 
