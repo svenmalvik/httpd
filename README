@@ -8,8 +8,8 @@ nameserver --the original--
 >>
 
 >>
-INSTALL dnsmasq
-/etc/dnsmasq.d/10-consul.conf
+INSTALL/RUN dnsmasq
+vi /etc/dnsmasq.d/10-consul.conf
 server=/consul/127.0.0.1#8600
 <<
 
