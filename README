@@ -22,7 +22,7 @@ curl -X PUT $CONSUL/v1/kv/config/webapp/TEST -d "Dies ist ein Test"
 ------ LIVE DEMO ---------
 ### Service Discovery ###
 docker run -d -p 8080:80 --name helloworld svenmalvik/helloworld
-curl -X PUT -d '{ "ID": "helloworld","Name": "helloworld","Address": "<IP>","Port": 8080}' http://$CONSUL:8500/v1/agent/service/register
+curl -X PUT -d '{ "ID": "helloworld","Name": "helloworld","Address": "<HOST_IP>","Port": 8080}' http://$CONSUL:8500/v1/agent/service/register
 curl localhost:8500/v1/catalog/services
 curl localhost:8500/v1/catalog/service/helloworld
 dig @localhost -p 8600 helloworld.service.consul
