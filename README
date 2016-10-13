@@ -28,6 +28,7 @@ curl -X PUT -d '{ "ID": "helloworld","Name": "helloworld","Address": "<IP>","Por
 curl localhost:8500/v1/catalog/services
 curl localhost:8500/v1/catalog/service/helloworld
 dig @localhost -p 8600 helloworld.service.consul
+dig @localhost -p 8600 helloworld.service.consul SRV
 dig helloworld.service.consul
 curl -X DELETE localhost:8500/v1/agent/service/deregister/helloworld
 docker stop helloworld; docker rm helloworld
