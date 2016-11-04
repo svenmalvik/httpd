@@ -30,7 +30,7 @@ dig helloworld.service.consul
 ### consul template ###
 docker run -it -p 80:80 --name httpd --entrypoint bash --env CONSUL=$CONSUL svenmalvik/httpd
 consul-template -consul=$CONSUL -template "/etc/consul-templates/app.conf.tmpl:/usr/local/apache2/conf/extra/app.conf:httpd -k restart" -once
-curl helloworld.service.consul
+curl helloworld.service.consul or browser: localhost:8080
 docker stop helloworld; docker rm helloworld
 
 ### envconsul ###
