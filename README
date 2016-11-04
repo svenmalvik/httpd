@@ -24,6 +24,8 @@ docker run -d -p 8080:80 --name helloworld svenmalvik/helloworld
 curl $CONSUL/v1/catalog/services
 curl $CONSUL/v1/catalog/service/helloworld
 dig @localhost -p 8600 helloworld.service.consul
+
+### Register DEMO ###
 dig @localhost -p 8600 helloworld.service.consul SRV
 dig helloworld.service.consul
 
