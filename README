@@ -24,10 +24,10 @@ docker run -d -p 8080:80 --name helloworld svenmalvik/helloworld
 curl $CONSUL/v1/catalog/services
 curl $CONSUL/v1/catalog/service/helloworld
 dig @localhost -p 8600 helloworld.service.consul
+dig helloworld.service.consul
 
 ### Register DEMO ###
-dig @localhost -p 8600 helloworld.service.consul SRV
-dig helloworld.service.consul
+dig helloworld.service.consul SRV
 
 ### consul template ###
 docker run -it -p 80:80 --name httpd --entrypoint bash --env CONSUL=$CONSUL svenmalvik/httpd
